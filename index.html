@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const elem = ['Rock', 'Paper', 'Scissors'];
+        const computerPlay = function(){
+            let randomIndex = Math.floor(Math.random() * Math.floor(elem.length));
+            return elem[randomIndex]
+        }
+    
+        let playerScore = 0;
+        let computerScore = 0;
+
+        function playRound(playerSelection, computerPlay){
+            let playerSelectionClean =  playerSelection.toLowerCase();
+            let computerPlayClean = computerPlay.toLowerCase();
+            if(playerSelectionClean === 'rock' && computerPlayClean === 'paper' || 
+            playerSelectionClean === 'paper' && computerPlayClean === 'scissors'||
+            playerSelectionClean === 'scissors' && computerPlayClean === 'rock'){
+                computerScore ++;
+                console.log("You lose! " + computerPlay + " beats " + playerSelectionClean[0].toUpperCase() + playerSelectionClean.slice(1) + ".")
+            } else if (playerSelectionClean === 'paper' && computerPlayClean === 'rock' ||
+                playerSelectionClean === 'scissors' && computerPlayClean === 'paper' ||
+                playerSelectionClean === 'rock' && computerPlayClean === 'scissors'){
+                    playerScore ++;
+                    console.log("You win! " + playerSelectionClean[0].toUpperCase() + playerSelectionClean.slice(1) + " beats " + computerPlay + ".")
+            } else if (playerSelectionClean === 'paper' && computerPlayClean === 'paper' ||
+                playerSelectionClean === 'scissors' && computerPlayClean === 'scissors' ||
+                playerSelectionClean === 'rock' && computerPlayClean === 'rock'){ 
+                console.log('Even!')
+            } else {
+                alert('Your selection was invalid');
+            }
+        }
+
+        function game(numRounds){
+            for(let i = 0; i <= numRounds; i++){
+                let playerSelection = prompt('Rock, Paper, Scissors? Make a call!');
+                let playerSelectionClean = playerSelection.toLowerCase();
+                switch (playerSelectionClean){
+                    case 'paper':
+                    case 'rock':
+                    case 'scissors':
+                       let computerSelection = computerPlay();
+                        console.log('Comuter selection: ', computerSelection)
+                        playRound(playerSelection, computerSelection);
+                        console.log('You: ' + playerScore + ' Comuputer: ' + computerScore);
+                        break;
+                    default:
+                         alert('You must enter a valid selection');
+                }
+            }
+            if(playerScore > computerScore){
+                console.log('You are the winner!')
+            } else {
+                console.log('Sorry, no luck this time')
+            }
+        }
+
+        game(5);
+    </script>
+</body>
+</html>
