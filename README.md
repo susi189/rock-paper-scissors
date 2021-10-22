@@ -6,4 +6,4 @@ The player plays against the computer and when one of them scores 5 points the g
 
 This was one of the first projects that I built from scratch. I used simple HTML and CSS and mostly practiced working with vanilla JavaScript.
 
-NOTE: I improved the design of this game [here](https://github.com/susi189/rps-game).
+NOTE: I improved the design of this game [here](https://susi189.github.io/rps-game/src/).
